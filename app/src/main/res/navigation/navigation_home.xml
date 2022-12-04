@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/main_screen">
+
+    <fragment
+        android:id="@+id/main_screen"
+        tools:layout="@layout/screen_main"
+        android:label="main_screen"
+        android:name="com.devwarex.news.ui.home.main.MainScreen">
+        <action android:id="@+id/action_navigate_to_settings"
+            app:destination="@id/settings_screen"/>
+        <action
+            android:id="@+id/action_navigate_to_search"
+            app:destination="@id/search_screen"/>
+
+        <action
+            android:id="@+id/action_open_web_view"
+            app:destination="@+id/article_web_view">
+            <argument
+                android:name="url"
+                app:argType="string"
+                android:defaultValue=""/>
+        </action>
+
+    </fragment>
+
+    <fragment android:name="com.devwarex.news.ui.home.settings.SettingsScreen"
+        tools:layout="@layout/screen_settings"
+        android:label="settings_screen"
+        android:id="@+id/settings_screen"/>
+    <fragment
+        android:id="@+id/article_web_view"
+        android:label="web_view"
+        tools:layout="@layout/web_view_screen"
+        android:name="com.devwarex.news.ui.home.WebViewScreen">
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+    <fragment
+        android:id="@+id/search_screen"
+        android:label="search_screen"
+        android:name="com.devwarex.news.ui.home.search.SearchScreen"
+        tools:layout="@layout/screen_search">
+        <action
+            android:id="@+id/action_open_web_view_from_search"
+            app:destination="@+id/article_web_view">
+            <argument
+                android:name="url"
+                app:argType="string"
+                android:defaultValue=""/>
+        </action>
+    </fragment>
+</navigation>
